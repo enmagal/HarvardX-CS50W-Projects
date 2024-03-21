@@ -55,3 +55,61 @@
 #navbarNavAltMarkup {
   justify-content: flex-end;
 }
+
+.container_advanced {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+  padding-top: 30px;
+
+  h1 {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    align-items: flex-end;
+
+    div {
+      width: 50vw;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 13px;
+
+      input {
+        width: 70%;
+        border: 1px solid #d9d9d9;
+        height: 25px;
+        padding: 1px 8px;
+        border-radius: 2px;
+
+        &:focus {
+          outline: none;
+          border: 1px solid #3079ed;
+        }
+      }
+    }
+
+    input[type="submit"] {
+      background-color: #4d90fe;
+      color: #fff;
+      border: 1px solid #3079ed;
+      height: 30px;
+      min-width: 120px;
+      padding: 0 12px;
+      border-radius: 2px;
+      font-size: 11px;
+      font-weight: bold;
+      margin-top: 20px;
+
+      &:hover {
+        background-color: #3079ed;
+      }
+    }
+  }
+}
