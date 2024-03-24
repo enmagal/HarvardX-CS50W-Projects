@@ -35,8 +35,21 @@
       <img src="./images/googlelogo_color_272x92dp.png" alt="logo-google" />
       <form action="https://google.com/search">
         <input type="text" name="q" />
-        <input type="submit" value="Google Search" />
+        <div class="button_container">
+          <input type="submit" value="Google Search" />
+          <button type="button" onclick="feelingLucky()">
+            I'm Feeling Lucky
+          </button>
+        </div>
       </form>
     </div>
+    <script>
+      function feelingLucky() {
+        window.location.href =
+          "https://google.com/search?q=" +
+          encodeURIComponent(document.querySelector('input[name="q"]').value) +
+          "&btnI";
+      }
+    </script>
   </body>
 </html>

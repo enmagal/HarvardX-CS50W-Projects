@@ -36,7 +36,8 @@
       }
     }
 
-    input[type="submit"] {
+    input[type="submit"],
+    button {
       width: fit-content;
       border: none;
       border: 1px solid #f8f9fa;

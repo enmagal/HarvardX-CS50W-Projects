@@ -32,7 +32,8 @@
   outline: none;
   box-shadow: 0 0 5px lightgray;
 }
-.container form input[type=submit] {
+.container form input[type=submit],
+.container form button {
   width: fit-content;
   border: none;
   border: 1px solid #f8f9fa;
@@ -41,7 +42,8 @@
   height: 36px;
   border-radius: 4px;
 }
-.container form input[type=submit]:hover {
+.container form input[type=submit]:hover,
+.container form button:hover {
   border: 1px solid #dfe1e5;
 }
 
