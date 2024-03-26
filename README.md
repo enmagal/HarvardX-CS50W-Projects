@@ -2,6 +2,13 @@
 
 Bunch of projects from the course HarvardX CS50W
 
+## Projects
+
+- Project 0: Search
+
+- Project 1: Wiki
+  Design a Wikipedia-like online encyclopedia.
+
 ## Useful commands
 
 ### Lecture 0
