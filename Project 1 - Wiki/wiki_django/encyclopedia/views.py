@@ -2,11 +2,15 @@ from django import forms
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+import random
 
 from . import util
 
 class NewEntryForm(forms.Form):
     title = forms.CharField(label="Title")
+    content = forms.CharField(label="Content", widget=forms.Textarea)
+
+class EditEntryForm(forms.Form):
     content = forms.CharField(label="Content", widget=forms.Textarea)
 
 def index(request):
@@ -62,3 +66,26 @@ def add(request):
         "form": NewEntryForm(),
         "error" : False
     })
+
+def edit(request, title):
+    if request.method == 'POST':
+        form = EditEntryForm(request.POST)
+        if form.is_valid():
+            content = form.cleaned_data["content"]
+            util.save_entry(title, content)
+            return HttpResponseRedirect(reverse("wiki:entry", kwargs={'title': title}))
+
+        else:
+            return render(request, "encyclopedia/edit.html", {
+                "title": title,
+                "form": form
+            })
+
+    return render(request, "encyclopedia/edit.html", {
+        "title": title,
+        "form": EditEntryForm()
+    })
+
+def random_entry(request):
+    title = random.choice(util.list_entries())
+    return HttpResponseRedirect(reverse("wiki:entry", kwargs={'title': title})) 
