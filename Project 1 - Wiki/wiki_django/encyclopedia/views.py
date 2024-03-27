@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 import random
+import markdown2
 
 from . import util
 
@@ -19,7 +20,7 @@ def index(request):
     })
 
 def entry(request, title):
-    content = util.get_entry(title)
+    content = markdown2.markdown(util.get_entry(title))
     if content == None:
         return render(request, "encyclopedia/error_404.html")
     else:
@@ -61,11 +62,11 @@ def add(request):
                 "form": form,
                 "error" : False
             })
-
-    return render(request, "encyclopedia/add.html", {
-        "form": NewEntryForm(),
-        "error" : False
-    })
+    else:
+        return render(request, "encyclopedia/add.html", {
+            "form": NewEntryForm(),
+            "error" : False
+        })
 
 def edit(request, title):
     if request.method == 'POST':
@@ -81,10 +82,12 @@ def edit(request, title):
                 "form": form
             })
 
-    return render(request, "encyclopedia/edit.html", {
-        "title": title,
-        "form": EditEntryForm()
-    })
+    else:
+        content = util.get_entry(title)
+        return render(request, "encyclopedia/edit.html", {
+            "title": title,
+            "form": EditEntryForm({"content":content})
+        })
 
 def random_entry(request):
     title = random.choice(util.list_entries())

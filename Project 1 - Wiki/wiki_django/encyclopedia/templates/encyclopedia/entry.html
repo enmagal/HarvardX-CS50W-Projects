@@ -5,7 +5,6 @@ Encyclopedia - {{ title }}
 {%endblock %}
 
 {% block body %}
-<h1> {{ title }} </h1>
 <a href="{% url 'wiki:edit' title=title %}">Edit this page</a>
-{{ content }}
+{{ content|safe }}
 {% endblock %}
