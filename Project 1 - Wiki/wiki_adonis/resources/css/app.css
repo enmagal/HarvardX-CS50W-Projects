@@ -14,9 +14,21 @@ body {
 }
 
 h1 {
-  @apply text-3xl font-bold mb-3 mt-6;
+  @apply text-5xl font-semibold mb-5 mt-6;
+}
+
+h2 {
+  @apply text-3xl font-semibold;
 }
 
 a {
   @apply text-blue-500 hover:text-indigo-500;
+}
+
+nav > a {
+  @apply p-2 text-gray-900 rounded-lg hover:bg-gray-100 hover:text-gray-900;
+}
+
+ul {
+  @apply list-disc ml-6;
 }
